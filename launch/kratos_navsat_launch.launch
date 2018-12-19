@@ -1,0 +1,39 @@
+<launch>
+
+  <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" respawn="true">
+  
+     <!--  PARAMETERS WE NEED TO SET ACCORDING TO OUR NEEDS (SOME OF THEM ARE SET BELOW AS AN EXAMPLE
+     broadcast_utm_transform_(false),
+     broadcast_utm_transform_as_parent_frame_(false),
+     gps_updated_(false),
+     has_transform_gps_(false),
+     has_transform_imu_(false),
+     has_transform_odom_(false),
+     odom_updated_(false),
+     publish_gps_(false),
+     transform_good_(false),
+     use_manual_datum_(false),
+     use_odometry_yaw_(false),
+     zero_altitude_(false),
+     magnetic_declination_(0.0),
+     utm_odom_tf_yaw_(0.0),
+     yaw_offset_(0.0),
+     base_link_frame_id_("base_link"),
+     gps_frame_id_(""),
+     utm_zone_(""),
+     world_frame_id_("odom"),
+     transform_timeout_(ros::Duration(0)),
+     tf_listener_(tf_buffer_) -->
+     
+    <param name="magnetic_declination_radians" value="0"/>
+
+    <param name="yaw_offset" value="0"/>
+    <param name="broadcast_utm_transform" value="true" />
+
+    <remap from="/imu/data" to="/imu" />
+    <remap from="/gps/fix" to="/gps/fix/" />
+    <remap from="/odometry/filtered" to="/odom" />
+
+  </node>
+
+</launch>
